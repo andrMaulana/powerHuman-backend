@@ -9,4 +9,22 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Team extends Model
 {
     use HasFactory, SoftDeletes;
+
+    protected $fillable = [
+        'name',
+        'icon',
+        'company_id'
+    ];
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
+
+    // parent ralation to employees Models
+    public function employees()
+    {
+        return $this->hasMany(Employee::class);
+    }
+
 }
